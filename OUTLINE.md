@@ -21,7 +21,6 @@
 • will have an array of images
 
 ```
-
 images = [
 	{
 		id: number,
