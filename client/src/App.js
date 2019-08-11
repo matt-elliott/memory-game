@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Row, Col, Jumbotron} from 'react-bootstrap';
+import Images from './components/Images';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           </h2>
         </Jumbotron>
       </Row>
-
+      <Images />
     </Container>
   );
 }
