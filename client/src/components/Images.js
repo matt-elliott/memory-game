@@ -37,21 +37,38 @@ class Images extends Component {
 
     this.setState({
       images: imagesArray
-    }, () => {
-      console.log(imagesArray);
     });
   }
 
-  imageClickHandler = () => {
+  imageClickHandler = async event => {
     console.log('clicked');
-    // • get element id and find it in the data
+    let id = parseInt(event.currentTarget.id);
+    let match = await this.state.images.find( item => item.id === id);
+
     // • check if clicked === true
-    //     • end the game
-    //     • else set clicked to true on matched data item
-    //         > restart game
-    // • if score > image.length
-    //     • show win game alert
-    //     > restart game
+    console.log(match.clicked);
+    if(match.clicked === true) {
+      alert('You Lose!');
+      this.setState({
+        score: 0
+      });
+      window.location = '/';
+    } else {
+      match.clicked = true;
+      this.setState({
+        score: ++this.state.score
+      }, () => {
+        if(this.state.score > this.state.images.length - (this.state.images.length / 3)) {
+          alert('You Win!');
+
+          this.setState({
+            score: 0
+          });
+
+          window.location = '/';
+        }
+      }); 
+    }
   }
 
   render() {
