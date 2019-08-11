@@ -60,7 +60,7 @@ class Images extends Component {
         {this.state.images.map(image => {
         return (
           <figure
-            className="col-4 border"
+            className="col-sm-6 col-md-4 border"
             id={image.id}
             onClick={this.imageClickHandler}
             style={{maxHeight: '200px', overflow: 'hidden', padding: '15px'}}>
