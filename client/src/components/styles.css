@@ -1,0 +1,9 @@
+figure {
+  max-height: '200px';
+  padding: 15px; 
+  overflow: 'hidden';
+}
+
+figure img {
+  max-width: '100%';
+}

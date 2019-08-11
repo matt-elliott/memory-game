@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Row} from 'react-bootstrap';
 import imageData from '../data/images.json';
 
 class Images extends Component {
@@ -55,18 +56,19 @@ class Images extends Component {
 
   render() {
     return (
-      <div class="images">
+      <Row>
         {this.state.images.map(image => {
         return (
           <figure
-            className="col border"
+            className="col-4 border"
             id={image.id}
-            onClick={this.imageClickHandler}>
-             <img src={image.src} alt="Click to Play" />
+            onClick={this.imageClickHandler}
+            style={{maxHeight: '200px', overflow: 'hidden', padding: '15px'}}>
+             <img src={image.src} alt="Click to Play" style={{maxWidth: '100%'}} />
           </figure>
         )
       })}
-    </div>
+    </Row>
     )
   }
 }
