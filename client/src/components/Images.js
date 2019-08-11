@@ -9,8 +9,9 @@ class Images extends Component {
     highScore: 0
   }
 
-  componentDidMount() {
-    this.processImages();
+  async componentDidMount() {
+    await this.processImages();
+    // this.imageShuffler();
   }
   processImages = () => {
     const dataString = JSON.stringify(imageData);
@@ -40,13 +41,10 @@ class Images extends Component {
     });
   }
 
-  imageClickHandler = async event => {
-    console.log('clicked');
+  imageClickHandler = event => {
     let id = parseInt(event.currentTarget.id);
-    let match = await this.state.images.find( item => item.id === id);
+    let match = this.state.images.find( item => item.id === id);
 
-    // • check if clicked === true
-    console.log(match.clicked);
     if(match.clicked === true) {
       alert('You Lose!');
       this.setState({
@@ -71,10 +69,26 @@ class Images extends Component {
     }
   }
 
+  imageShuffler = () => {
+    //todo make truly random (so it wont repeat)
+    this.state.images.forEach(item => {
+      let randomNumber = Math.ceil(Math.random() * this.state.images.length);
+      item.display_order = randomNumber;
+    });
+
+    // this.setState({
+    //   images: 
+    // }, () => {
+    //   console.log(this.state.images);
+    // });
+  }
+
   render() {
     return (
       <Row>
-        {this.state.images.map(image => {
+        {this.state.images.map((image) => {
+          {image = this.state.images[Math.ceil(Math.random() *
+          this.state.images.length - 1)]}
         return (
           <figure
             className="col-sm-6 col-md-4 border"
