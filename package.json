@@ -4,7 +4,7 @@
   "description": "A small app built with React to help the memory.",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "react-bootstrap": "^1.0.0-beta.11"
   },
   "devDependencies": {},
